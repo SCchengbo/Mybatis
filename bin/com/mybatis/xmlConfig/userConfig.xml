@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="crud">
+	<select id="findAllUser" resultType="User">
+		select * from users;
+	</select>
+	<select id="selectUser" parameterType="int" resultType="User">
+		select *
+		from users where `id`=#{id};
+	</select>
+	<delete id="deleteUser" parameterType="int">
+		delete from users where
+		`id`=#{id};
+	</delete>
+	<select id="selectLike" parameterType="string" resultType="User">
+		select * from users s where s.NAME like
+		'%${value}%';
+	</select>
+	<update id="updateUser" parameterType="User">
+		update users
+		u
+		set
+		u.NAME=#{name} where u.id=#{id};
+	</update>
+</mapper>
